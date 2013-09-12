@@ -6,7 +6,19 @@ body {
 	min-height:100%;
 	font-family: Arial, Helvetica, sans-serif;
 }
-body {
+
+#window {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-width: 1024px;
+	min-height: 768px;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:0;
+	padding:0;
 	-webkit-background-size: 100% 100%;
 	-moz-background-size: 100% 100%;
 	-o-background-size: 100% 100%;
@@ -16,19 +28,6 @@ body {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-#window {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	min-width: 768px;
-	min-height: 768px;
-	left:0;
-	right:0;
-	top:0;
-	bottom:0;
-	margin:0;
-	padding:0;
-}
 #center-horizontal {
 	position:relative;
 	display:inline-block;
@@ -37,7 +36,7 @@ body {
 	width: 100%;
 	height: 100%;
 	min-height: 768px;
-	min-width: 768px;
+	min-width: 1024px;
 	max-width: 1024px;
 	margin-left:auto;
 	margin-right:auto;
@@ -47,7 +46,7 @@ body {
 	left: 0;
 	right: 0;
 	width: 100%;
-	min-width: 768px;
+	min-width: 1024px;
 	max-width: 1024px;
 	height: 768px;
 	top:50%;
@@ -57,7 +56,7 @@ body {
 #video-page, .video-page {
 	position: absolute;
 	width: 100%;
-	min-width: 768px;
+	min-width: 1024px;
 	max-width: 1024px;
 	height: 768px;
 	left: 0px;
@@ -70,7 +69,7 @@ body {
 #video-page .tubeplayer, .video-page .tubeplayer,
 #video-page .ytplayer, .video-page .ytplayer {
 	width: 100%;
-	min-width: 768px;
+	min-width: 1024px;
 	max-width: 1024px;
 	height: 648px;
 	margin-top: 60px;
@@ -80,7 +79,7 @@ body {
 #menu-page, .menu-page {
 	position: absolute;
 	width: 100%;
-	min-width: 768px;
+	min-width: 1024px;
 	max-width: 1024px;
 	height: 768px;
 	left: 0px;
@@ -370,15 +369,6 @@ body {
 	display: block;
 }
 
-#page0 .subtitle {
-	position: relative;
-	width: 100%;
-	height: 120px;
-	margin-top: 16px;
-	text-align:justify;
-	display: block;
-}
-
 .subtitle h2 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 24px;
@@ -388,24 +378,14 @@ body {
 	line-height: 28px;
 }
 
-#page0 .subtitle h2 {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	font-weight: bold;
-	color: #1075a6;
-	margin: 0;
-	line-height: 24px;
-}
-
-
 #callbackForm {
 	width: 760px;
 	height: 240px;
 	position:absolute;
-	top:60%;
+	top:50%;
 	left:50%;
 	margin-left:-380px;
-	margin-top:-120px;
+	margin-top:-80px;
 	display:block;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 28px;
@@ -433,24 +413,41 @@ label {
 .save {
 	position:absolute;
 	left:50%;
-	top:80%;
+	top:75%;
 }
 
 .skip {
 	position:absolute;
 	left:50%;
-	top:90%;
+	top:85%;
+}
+
+.remark {
+	position: absolute;
+	right: 0px;
+	bottom: 40px;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	left: 0px;
+	color: #1075a6;
 }
 
 .rules {
 	position: absolute;
-	right: 10px;
+	right: 0px;
 	bottom: 10px;
-	text-decoration: none;
+	text-decoration: underline;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	color: #FFF;
+	font-size: 18px;
 	font-weight: bold;
+	text-align: center;
+	display: block;
+	left: 0px;
+	color: #1075a6;
 }
 
 
@@ -468,6 +465,7 @@ label {
 	color: #F00;
 }
 
+#page1 .remark, #page2 .remark, #page3 .remark, #page4 .remark, #page5 .remark, 
 #page1 .rules, #page2 .rules, #page3 .rules, #page4 .rules, #page5 .rules, 
 #page1 .skip, #page2 .skip, #page3 .skip, #page4 .skip, #page5 .skip, 
 #page0 .play, #page4 .play, #page5 .play, 

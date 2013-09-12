@@ -223,9 +223,10 @@ var menuButtons = {
 		next: { buttonClass:"button-small", text:"" },
 		home: { buttonClass:"button", text:"Home" },
 		contact: { buttonClass:"button", text:"Have Questions ?" },
-		save: { buttonClass:"button", text:"Submit" },
+		save: { buttonClass:"button", text:"Enter" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
-		rules: { buttonClass:"", text:"Participation in this promotion is subject to the official rules" }
+		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
 	},
 	es: {
 		replay: { buttonClass:"button", text:"Replay" },
@@ -236,7 +237,8 @@ var menuButtons = {
 		contact: { buttonClass:"button", text:"¿Tiene preguntas?" },
 		save: { buttonClass:"button", text:"Enviar" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
-		rules: { buttonClass:"", text:"Participation in this promotion is subject to the official rules" }
+		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
 	},
 	ru: {
 		replay: { buttonClass:"button", text:"Повторить" },
@@ -247,6 +249,7 @@ var menuButtons = {
 		contact: { buttonClass:"button", text:"У Вас вопросы ?" },
 		save: { buttonClass:"button", text:"Отправить" },
 		skip: { buttonClass:"button-mini", text:"Пропустить" },
+		remark: { buttonClass:"", text:"C вами свяжется представитель Cryo-Cell, чтобы ответить на все Ваши вопросы о хранении пуповинной крови." },
 		rules: { buttonClass:"", text:"Участие в акции описано в официальных правилах" }
 	},
 	it: {
@@ -258,7 +261,8 @@ var menuButtons = {
 		contact: { buttonClass:"button", text:"Sono domande ?" },
 		save: { buttonClass:"button", text:"Invia" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
-		rules: { buttonClass:"", text:"Participation in this promotion is subject to the official rules" }
+		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
 	},
 	cn: {
 		replay: { buttonClass:"button", text:"重播" },
@@ -269,7 +273,8 @@ var menuButtons = {
 		contact: { buttonClass:"button", text:"有疑问吗？ " },
 		save: { buttonClass:"button", text:"提交" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
-		rules: { buttonClass:"", text:"Participation in this promotion is subject to the official rules" }
+		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
 	},
 	tw: {
 		replay: { buttonClass:"button", text:"重播" },
@@ -280,7 +285,8 @@ var menuButtons = {
 		contact: { buttonClass:"button", text:"有疑問嗎？" },
 		save: { buttonClass:"button", text:"提交" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
-		rules: { buttonClass:"", text:"Participation in this promotion is subject to the official rules" }
+		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
 	}
 };
 
@@ -289,8 +295,8 @@ var menuButtons = {
 var pages = {
 	en: {
 		page0: { 
-			title: "Win Free Cord Blood Banking",
-			subtitle: "Enter for your chance to safeguard your baby’s cord blood stem cells for FREE. Cord Blood Banking is a service that includes collecting, processing and preserving a newborn’s cord blood stem cells. Join the nearly 500,000 parents from 87 countries who selected Cryo-Cell to help safeguard their families' future health. Only expecting parents are qualified to enter."
+			title: "Learn about cord blood banking!",
+			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "Why should you store<br />your baby’s cord blood?",
@@ -315,8 +321,8 @@ var pages = {
 	},
 	es: {
 		page0: { 
-			title: "Win Free Cord Blood Banking",
-			subtitle: "Enter for your chance to safeguard your baby’s cord blood stem cells for FREE. Cord Blood Banking is a service that includes collecting, processing and preserving a newborn’s cord blood stem cells. Join the nearly 500,000 parents from 87 countries who selected Cryo-Cell to help safeguard their families' future health. Only expecting parents are qualified to enter."
+			title: "Learn about cord blood banking!",
+			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "¿Por qué debe almacenar la sangre del cordón umbilical de su bebé?",
@@ -341,8 +347,8 @@ var pages = {
 	},
 	ru: {
 		page0: { 
-			title: "Выиграйте хранение крови",
-			subtitle: "Enter for your chance to safeguard your baby’s cord blood stem cells for FREE. Cord Blood Banking is a service that includes collecting, processing and preserving a newborn’s cord blood stem cells. Join the nearly 500,000 parents from 87 countries who selected Cryo-Cell to help safeguard their families' future health. Only expecting parents are qualified to enter."
+			title: "Узнайте о хранении крови!",
+			subtitle: "Пожалуйста, заполните форму, чтобы получить шанс<br />выиграть бесплатное хранение пуповинной крови Вашего ребёнка."
 		},
 		page1: { 
 			title: "Почему Вы должны сохранить пуповинную кровь Вашего ребенка?",
@@ -367,8 +373,8 @@ var pages = {
 	},
 	it: {
 		page0: { 
-			title: "Win Free Cord Blood Banking",
-			subtitle: "Enter for your chance to safeguard your baby’s cord blood stem cells for FREE. Cord Blood Banking is a service that includes collecting, processing and preserving a newborn’s cord blood stem cells. Join the nearly 500,000 parents from 87 countries who selected Cryo-Cell to help safeguard their families' future health. Only expecting parents are qualified to enter."
+			title: "Learn about cord blood banking!",
+			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "Why should you store<br />your baby’s cord blood?",
@@ -393,8 +399,8 @@ var pages = {
 	},
 	cn: {
 		page0: { 
-			title: "Win Free Cord Blood Banking",
-			subtitle: "Enter for your chance to safeguard your baby’s cord blood stem cells for FREE. Cord Blood Banking is a service that includes collecting, processing and preserving a newborn’s cord blood stem cells. Join the nearly 500,000 parents from 87 countries who selected Cryo-Cell to help safeguard their families' future health. Only expecting parents are qualified to enter."
+			title: "Learn about cord blood banking!",
+			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "为什么您应该储存宝宝的脐带血？",
@@ -419,8 +425,8 @@ var pages = {
 	},
 	tw: {
 		page0: { 
-			title: "Win Free Cord Blood Banking",
-			subtitle: "Enter for your chance to safeguard your baby’s cord blood stem cells for FREE. Cord Blood Banking is a service that includes collecting, processing and preserving a newborn’s cord blood stem cells. Join the nearly 500,000 parents from 87 countries who selected Cryo-Cell to help safeguard their families' future health. Only expecting parents are qualified to enter."
+			title: "Learn about cord blood banking!",
+			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "為什麼您應該儲存寶寶的臍帶血？",
