@@ -226,7 +226,7 @@ var menuButtons = {
 		save: { buttonClass:"button", text:"Enter" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
 		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
-		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules." }
 	},
 	es: {
 		replay: { buttonClass:"button", text:"Replay" },
@@ -238,7 +238,7 @@ var menuButtons = {
 		save: { buttonClass:"button", text:"Enviar" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
 		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
-		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules." }
 	},
 	ru: {
 		replay: { buttonClass:"button", text:"Повторить" },
@@ -250,7 +250,7 @@ var menuButtons = {
 		save: { buttonClass:"button", text:"Отправить" },
 		skip: { buttonClass:"button-mini", text:"Пропустить" },
 		remark: { buttonClass:"", text:"C вами свяжется представитель Cryo-Cell, чтобы ответить на все Ваши вопросы о хранении пуповинной крови." },
-		rules: { buttonClass:"", text:"Участие в акции описано в официальных правилах" }
+		rules: { buttonClass:"", text:"Участие в акции описано в официальных правилах." }
 	},
 	it: {
 		replay: { buttonClass:"button", text:"Replay" },
@@ -262,7 +262,7 @@ var menuButtons = {
 		save: { buttonClass:"button", text:"Invia" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
 		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
-		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules." }
 	},
 	cn: {
 		replay: { buttonClass:"button", text:"重播" },
@@ -274,7 +274,7 @@ var menuButtons = {
 		save: { buttonClass:"button", text:"提交" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
 		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
-		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules." }
 	},
 	tw: {
 		replay: { buttonClass:"button", text:"重播" },
@@ -286,7 +286,7 @@ var menuButtons = {
 		save: { buttonClass:"button", text:"提交" },
 		skip: { buttonClass:"button-mini", text:"Skip" },
 		remark: { buttonClass:"", text:"You may be contacted by a Cryo-Cell cord blood educator to answer any questions you have on cord blood." },
-		rules: { buttonClass:"", text:"This promotion is subject to the official rules" }
+		rules: { buttonClass:"", text:"This promotion is subject to the official rules." }
 	}
 };
 
@@ -296,7 +296,7 @@ var pages = {
 	en: {
 		page0: { 
 			title: "Learn about cord blood banking!",
-			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
+			subtitle: "Please fill in the form below<br />to enter our sweepstakes to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "Why should you store<br />your baby’s cord blood?",
@@ -322,7 +322,7 @@ var pages = {
 	es: {
 		page0: { 
 			title: "Learn about cord blood banking!",
-			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
+			subtitle: "Please fill in the form below<br />to enter our sweepstakes to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "¿Por qué debe almacenar la sangre del cordón umbilical de su bebé?",
@@ -374,7 +374,7 @@ var pages = {
 	it: {
 		page0: { 
 			title: "Learn about cord blood banking!",
-			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
+			subtitle: "Please fill in the form below<br />to enter our sweepstakes to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "Why should you store<br />your baby’s cord blood?",
@@ -400,7 +400,7 @@ var pages = {
 	cn: {
 		page0: { 
 			title: "Learn about cord blood banking!",
-			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
+			subtitle: "Please fill in the form below<br />to enter our sweepstakes to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "为什么您应该储存宝宝的脐带血？",
@@ -426,7 +426,7 @@ var pages = {
 	tw: {
 		page0: { 
 			title: "Learn about cord blood banking!",
-			subtitle: "Please fill in the form below to have a chance to bank your baby's cord blood for free."
+			subtitle: "Please fill in the form below<br />to enter our sweepstakes to bank your baby's cord blood for free."
 		},
 		page1: { 
 			title: "為什麼您應該儲存寶寶的臍帶血？",
