@@ -172,36 +172,42 @@ var videos = {
 //		button-small-mini
 var videoButtons = {
 	en: {
+		videoHome: { buttonClass:"button-small-mini", text:"Home" },
 		videoStop: { buttonClass:"button-small-mini", text:"Done" },
 		videoContact: { buttonClass:"button-mini", text:"Have Questions ?" },
 		videoTip: { buttonClass:"", text:"Here you can enable subtitles in your own language" },
 		videoSorry: { buttonClass:"", text:"We apologize, but this video shows only in English" }
 	},
 	es: {
+		videoHome: { buttonClass:"button-small-mini", text:"Home" },
 		videoStop: { buttonClass:"button-small-mini", text:"Finalizado" },
 		videoContact: { buttonClass:"button-mini", text:"¿Tiene preguntas?" },
 		videoTip: { buttonClass:"", text:"Aquí puede activar los subtítulos en su propio idioma" },
 		videoSorry: { buttonClass:"", text:"Lo sentimos, pero este video muestra sólo en Inglés" }
 	},
 	ru: {
+		videoHome: { buttonClass:"button-small-mini", text:"Главная" },
 		videoStop: { buttonClass:"button-small-mini", text:"Стоп" },
 		videoContact: { buttonClass:"button-mini", text:"У Вас вопросы ?" },
 		videoTip: { buttonClass:"", text:"Здесь вы можете включить субтитры на вашем родном языке" },
 		videoSorry: { buttonClass:"", text:"Мы извиняемся, но это видео демонстрируется только на английском языке" }
 	},
 	it: {
+		videoHome: { buttonClass:"button-small-mini", text:"Home" },
 		videoStop: { buttonClass:"button-small-mini", text:"Fatto" },
 		videoContact: { buttonClass:"button-mini", text:"Sono domande ?" },
 		videoTip: { buttonClass:"", text:"Qui è possibile attivare i sottotitoli nella tua lingua" },
 		videoSorry: { buttonClass:"", text:"Ci scusiamo, ma il video mostra solo in inglese" }
 	},
 	cn: {
+		videoHome: { buttonClass:"button-small-mini", text:"首頁" },
 		videoStop: { buttonClass:"button-small-mini", text:"完成" },
 		videoContact: { buttonClass:"button-mini", text:"有疑问吗？" },
 		videoTip: { buttonClass:"", text:"在这里，你可以使自己的语言的字幕" },
 		videoSorry: { buttonClass:"", text:"我们深表歉意，但录像显示，仅在英语" }
 	},
 	tw: {
+		videoHome: { buttonClass:"button-small-mini", text:"首頁" },
 		videoStop: { buttonClass:"button-small-mini", text:"完成" },
 		videoContact: { buttonClass:"button-mini", text:"有疑問嗎？" },
 		videoTip: { buttonClass:"", text:"在這裡，你可以使自己的語言的字幕" },
@@ -546,6 +552,7 @@ var languages = {
 function currentCallbackForm() { return $("#callbackForm",currentMenuPage()); }
 function currentMenuPage() { return $(".menu-page." + currentLanguage).get(currentIndex); }
 function currentVideoPage() { return $(".video-page." + currentLanguage).get(currentIndex-1); }
+function currentVideoHome() { return $(".videoHome",currentVideoPage()); }
 function currentVideoStop() { return $(".videoStop",currentVideoPage()); }
 function currentVideoContact() { return $(".videoContact",currentVideoPage()); }
 function currentPlayer() { return $(currentVideoPage()).find("video").get(0); }
@@ -571,10 +578,22 @@ function showCurrentVideo() {
 	sorry.toggle(page.hasClass("en")==false && ($(".tubeplayer",page).length>0 || $(".ytplayer",page).length>0));
 }
 function hideCurrentVideo() { $(currentVideoPage()).hide(); }
+function showCurrentVideoHome() { $(currentVideoHome()).fadeIn(); }
+function hideCurrentVideoHome() { $(currentVideoHome()).fadeOut(); }
 function showCurrentVideoStop() { $(currentVideoStop()).fadeIn(); }
 function hideCurrentVideoStop() { $(currentVideoStop()).fadeOut(); }
 function showCurrentVideoContact() { $(currentVideoContact()).fadeIn(); }
 function hideCurrentVideoContact() { $(currentVideoContact()).fadeOut(); }
+function showCurrentVideoMenu() { 
+	showCurrentVideoHome();
+	showCurrentVideoStop();
+	showCurrentVideoContact();
+}
+function hideCurrentVideoMenu() { 
+	hideCurrentVideoHome();
+	hideCurrentVideoStop();
+	hideCurrentVideoContact();
+}
 function showBuffering() { $("#buffering").show(); }
 function hideBuffering() { $("#buffering").hide(); }
 function fullScreen() { $("#window").fullScreen(true); }
@@ -765,12 +784,10 @@ function onPlayerStateChange(event) {
 		break;
 	case YT.PlayerState.PAUSED:
 	  	hideBuffering();
-		showCurrentVideoStop();
-		showCurrentVideoContact();
+		showCurrentVideoMenu();
 		break;
 	case YT.PlayerState.ENDED:
-		hideCurrentVideoStop();
-		hideCurrentVideoContact();
+		hideCurrentVideoMenu();
 		hideCurrentVideo();
 		hideBuffering();
 		currentIndex = nextIndex(currentIndex);
@@ -778,8 +795,7 @@ function onPlayerStateChange(event) {
 	  	break;
 	case YT.PlayerState.PLAYING:
 		hideBuffering();
-		hideCurrentVideoStop();
-		hideCurrentVideoContact();
+		hideCurrentVideoMenu();
 		showCurrentVideo();
 		hideCurrentMenu();
 	  	break;
@@ -969,8 +985,7 @@ function createVideoPage(lang, pageId) {
 		var player = this;
 			
 		player.addEventListener("ended", function(e){
-			hideCurrentVideoStop();
-			hideCurrentVideoContact();
+			hideCurrentVideoMenu();
 			hideCurrentVideo();
 			hideBuffering();
 			currentIndex = nextIndex(currentIndex);
@@ -978,14 +993,12 @@ function createVideoPage(lang, pageId) {
 		}, false);
 		player.addEventListener("playing", function(e){
 			hideBuffering();
-			hideCurrentVideoStop();
-			hideCurrentVideoContact();
+			hideCurrentVideoMenu();
 			showCurrentVideo();
 			hideCurrentMenu();
 		}, false);
 		player.addEventListener("pause", function(e){
-			showCurrentVideoStop();
-			showCurrentVideoContact();
+			showCurrentVideoMenu();
 		}, false);
 		player.addEventListener("waiting", function(e){
 			showBuffering();
@@ -1027,12 +1040,10 @@ function createVideoPage(lang, pageId) {
 			onUnMute: function(){}, // after the player is unmuted
 			onPlayerUnstarted: function(){
 				hideBuffering();
-				showCurrentVideoStop();
-				showCurrentVideoContact();
+				showCurrentVideoMenu();
 			}, // when the player returns a state of unstarted
 			onPlayerEnded: function(){
-				hideCurrentVideoStop();
-				hideCurrentVideoContact();
+				hideCurrentVideoMenu();
 				hideCurrentVideo();
 				hideBuffering();
 				currentIndex = nextIndex(currentIndex);
@@ -1040,15 +1051,13 @@ function createVideoPage(lang, pageId) {
 			}, // when the player returns a state of ended
 			onPlayerPlaying: function(){
 				hideBuffering();
-				hideCurrentVideoStop();
-				hideCurrentVideoContact();
+				hideCurrentVideoMenu();
 				showCurrentVideo();
 				hideCurrentMenu();
 			}, //when the player returns a state of playing
 			onPlayerPaused: function(){
 				hideBuffering();
-				showCurrentVideoStop();
-				showCurrentVideoContact();
+				showCurrentVideoMenu();
 			}, // when the player returns a state of paused
 			onPlayerCued: function(){
 				hideBuffering();
@@ -1072,9 +1081,18 @@ function createVideoPage(lang, pageId) {
 	page.find(".videoStop").click(function(event) {
 		if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
 		pauseCurrentPlayer();
-		hideCurrentVideoStop();
-		hideCurrentVideoContact();
+		hideCurrentVideoMenu();
 		hideCurrentVideo();
+		showCurrentMenu();
+		return false;
+	});
+
+	page.find(".videoHome").click(function(event) {
+		if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+		pauseCurrentPlayer();
+		hideCurrentVideoMenu();
+		hideCurrentVideo();
+		currentIndex = 0;
 		showCurrentMenu();
 		return false;
 	});
@@ -1082,8 +1100,7 @@ function createVideoPage(lang, pageId) {
 	page.find(".videoContact").click(function(event) {
 		if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
 		pauseCurrentPlayer();
-		hideCurrentVideoStop();
-		hideCurrentVideoContact();
+		hideCurrentVideoMenu();
 		hideCurrentVideo();
 		currentIndex = 3;
 		showCurrentMenu();
@@ -1330,6 +1347,16 @@ function createMenuPage(lang, pageId) {
 		return false;
 	});
 
+	page.find(".save").dblclick(function(event) {
+		if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+		closeDropdowns();
+		hideCurrentMenu();
+		currentIndex = nextIndex(currentIndex);
+        clearForm();
+		showCurrentMenu();
+		return false;
+	});
+
 	page.find(".next").click(function(event) {
 		if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
 		closeDropdowns();
@@ -1355,8 +1382,7 @@ function createMenuPage(lang, pageId) {
 		closeDropdowns();
 //		showBuffering();
 		hideCurrentMenu();
-		showCurrentVideoStop();
-		showCurrentVideoContact();
+		showCurrentVideoMenu();
 		showCurrentVideo();
 		playCurrentPlayer();
 		return false;
@@ -1368,8 +1394,7 @@ function createMenuPage(lang, pageId) {
 		hideCurrentMenu();
 //		showBuffering();
 		currentIndex = prevIndex(currentIndex);
-		showCurrentVideoStop();
-		showCurrentVideoContact();
+		showCurrentVideoMenu();
 		showCurrentVideo();
 		playCurrentPlayer();
 		return false;
@@ -1446,6 +1471,7 @@ function createPagesIfNotExists(lang) {
 	try {
 		$(".videoStop").hide();
 		$(".videoContact").hide();
+		$(".videoHome").hide();
 		$(".video-page").hide();
 		$(".menu-page").hide();
 	} catch (e) {

@@ -148,6 +148,7 @@ body {
 	width: 90px;
 	height: 40px;
 	margin-left: -45px;
+	margin-right: -45px;
 	margin-top: -20px;
 	color: #444444;
 	display: block;
@@ -219,7 +220,7 @@ body {
 #home, .home {
 	position:absolute;
 	left:50%;
-	top:50%;
+	top:70%;
 }
 #prev, .prev {
 	position:absolute;
@@ -239,6 +240,11 @@ body {
 #videoStop, .videoStop {
 	position:absolute;
 	left:50px;
+	top:30px;
+}
+#videoHome, .videoHome {
+	position:absolute;
+	right:50px;
 	top:30px;
 }
 #videoContact, .videoContact {
@@ -333,7 +339,7 @@ body {
 }
 
 .play {
-	top:60%;
+	top:52%;
 }
 
 
@@ -450,14 +456,10 @@ label {
 	color: #1075a6;
 }
 
-
-#page2 .play, #page3 .play {
-	top:50%;
-}
 #page2 .contact, #page3 .contact {
 	top:70%;
 }
-#page5 .home {
+#page4 .home, #page5 .home {
 	top:60%;
 }
 
@@ -472,7 +474,7 @@ label {
 #page0 .contact, #page1 .contact, #page2 .contact, #page3 .contact, #page4 .contact, #page5 .contact, 
 #page1 .save, #page2 .save, #page3 .save, #page4 .save, #page5 .save, 
 #page1 .replay, #page2 .replay, #page3 .replay, #page4 .replay, #page5 .replay, 
-#page0 .home, #page1 .home, #page2 .home, #page3 .home, 
+#page0 .home, 
 #page0 .prev, #page1 .prev, #page4 .prev, #page5 .prev, 
 #page0 .next, #page4 .next, #page5 .next {
 	display: none;
@@ -538,3 +540,6 @@ label.error {
 	margin-left: 4px;
 }
 
+img {
+	border:none;
+}
