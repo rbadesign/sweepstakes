@@ -97,7 +97,7 @@ body {
 	margin-top: -40px;
 	margin-left: -120px;
 	left: 160px;
-	top: 80px;
+	top: 60px;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
@@ -326,7 +326,7 @@ body {
 	position: absolute;
 	display: block;
 	vertical-align: middle;
-	top: 56px;
+	top: 36px;
 	right: 80px;
 	text-align: justify;
 }
@@ -377,7 +377,7 @@ body {
 
 .subtitle h2 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size: 24px;
+	font-size: 22px;
 	font-weight: bold;
 	color: #1075a6;
 	margin: 0;
@@ -391,7 +391,7 @@ body {
 	top:50%;
 	left:50%;
 	margin-left:-380px;
-	margin-top:-60px;
+	margin-top:-80px;
 	display:block;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 28px;
@@ -414,12 +414,14 @@ label {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 24px;
 	text-align:left;
+	vertical-align: middle;
+	display: inline-block;
 }
 
 .save {
 	position:absolute;
 	left:50%;
-	top:80%;
+	top:83%;
 }
 
 .skip {
@@ -491,8 +493,8 @@ label {
 	font-size:16px;
 }
 
-#page4 .title {
-	top:15%;
+#page0 .title {
+	top:13%;
 }
 
 label.error {

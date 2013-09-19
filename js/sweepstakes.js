@@ -19,6 +19,16 @@ var showSurvey = false;
 var showRules = false;
 var url = false;
 
+// Дефолтные значения передаваемых аргументов
+// Аргументы передаются в виде строки адреса,
+// либо задаются в параметре iPadID в формате имя=значение&имя=значение&имя=значение&...
+// Пример: 
+//    WWW    http://sweepstakes.com?doctor=Doctor%20No
+//    iPad   doctor=Doctor%20No
+var args = {
+	doctor: "Cryo-Cell"
+};
+
 // Определение воспроизводимого видео
 // Задаётся видео ID на YouTube и массив видео-файлов
 // В дальнейшем в зависимости от способа воспроизведения видео
@@ -255,7 +265,7 @@ var menuButtons = {
 		contact: { buttonClass:"button", text:"У Вас вопросы ?" },
 		save: { buttonClass:"button", text:"Отправить" },
 		skip: { buttonClass:"button-mini", text:"Пропустить" },
-		remark: { buttonClass:"", text:"C вами свяжется представитель Cryo-Cell, чтобы ответить на все Ваши вопросы о хранении пуповинной крови." },
+		remark: { buttonClass:"", text:"C вами свяжется представитель Cryo-Cell, чтобы ответить на Ваши вопросы о хранении пуповинной крови." },
 		rules: { buttonClass:"", text:"Участие в акции описано в официальных правилах." }
 	},
 	it: {
@@ -296,13 +306,14 @@ var menuButtons = {
 	}
 };
 
-// Заголовки и субтитлы отображаемые на страницах
+// Шаблоны заголовков и субтитлов отображаемых на страницах
 // Задаются в виде html кода
+// Переданные аргументы могут быть вставленны в шаблон в виде ##имя##
 var pages = {
 	en: {
 		page0: { 
 			title: "Learn about cord blood banking!",
-			subtitle: "Please fill in the form below<br />to enter our sweepstakes to bank your baby's cord blood for free."
+			subtitle: "##doctor## inviting you to watch a brief video on the importance of preserving<br />your baby's cord blood and tissue at birth. This video was developed in collaboration with<br />Parent's Guide to Cord Blood Foundation to educate future parents about life saving options.<br />Please fill in the form below to proceed :"
 		},
 		page1: { 
 			title: "Why should you store<br />your baby’s cord blood?",
@@ -328,7 +339,7 @@ var pages = {
 	es: {
 		page0: { 
 			title: "!Sangre del Cordón Umbilical!",
-			subtitle: "Por favor complete el siguiente formulario para participar en nuestro sorteo gratuito de almacenamiento de la sangre del cordón umbilical de su bebé."
+			subtitle: "##doctor## inviting you to watch a brief video on the importance of preserving<br />your baby's cord blood and tissue at birth. This video was developed in collaboration with<br />Parent's Guide to Cord Blood Foundation to educate future parents about life saving options.<br />Please fill in the form below to proceed :"
 		},
 		page1: { 
 			title: "¿Por qué debe almacenar la sangre del cordón umbilical de su bebé?",
@@ -354,7 +365,7 @@ var pages = {
 	ru: {
 		page0: { 
 			title: "Узнайте о хранении крови!",
-			subtitle: "Пожалуйста, заполните форму, чтобы получить шанс<br />выиграть бесплатное хранение пуповинной крови Вашего ребёнка."
+			subtitle: "##doctor## приглашает Вас посмотреть видео о сохранении пуповинной крови<br />Вашего ребёнка. Это видео создано совместно с Parent's Guide to Cord Blood Foundation<br />с целью информирования будущих родителей о возможностях по сохранению здоровья.<br />Пожалуйста, заполните форму ниже, чтобы продолжить :"
 		},
 		page1: { 
 			title: "Почему Вы должны сохранить пуповинную кровь Вашего ребенка?",
@@ -380,7 +391,7 @@ var pages = {
 	it: {
 		page0: { 
 			title: "Learn about cord blood banking!",
-			subtitle: "Please fill in the form below<br />to enter our sweepstakes to bank your baby's cord blood for free."
+			subtitle: "##doctor## inviting you to watch a brief video on the importance of preserving<br />your baby's cord blood and tissue at birth. This video was developed in collaboration with<br />Parent's Guide to Cord Blood Foundation to educate future parents about life saving options.<br />Please fill in the form below to proceed :"
 		},
 		page1: { 
 			title: "Why should you store<br />your baby’s cord blood?",
@@ -406,7 +417,7 @@ var pages = {
 	cn: {
 		page0: { 
 			title: "了解有关脐带血的储存！",
-			subtitle: "填写下面的表格即有资格参与我们的抽奖活动，赢得免费储存宝宝的脐带血。"
+			subtitle: "##doctor## inviting you to watch a brief video on the importance of preserving<br />your baby's cord blood and tissue at birth. This video was developed in collaboration with<br />Parent's Guide to Cord Blood Foundation to educate future parents about life saving options.<br />Please fill in the form below to proceed :"
 		},
 		page1: { 
 			title: "为什么您应该储存宝宝的脐带血？",
@@ -432,7 +443,7 @@ var pages = {
 	tw: {
 		page0: { 
 			title: "了解有關臍帶血的儲存！",
-			subtitle: "填寫下面的表格即有資格參與我們的抽獎活動，贏得免費儲存寶寶的臍帶血。"
+			subtitle: "##doctor## inviting you to watch a brief video on the importance of preserving<br />your baby's cord blood and tissue at birth. This video was developed in collaboration with<br />Parent's Guide to Cord Blood Foundation to educate future parents about life saving options.<br />Please fill in the form below to proceed :"
 		},
 		page1: { 
 			title: "為什麼您應該儲存寶寶的臍帶血？",
@@ -466,7 +477,8 @@ var formLabels = {
 		due_date: "Expected Delivery Date",
 		phone_number: "Phone Number",
 		email: "Email",
-		doctor: "Doctor"
+		doctor: "Doctor",
+		sweepstakes: "I want to participate sweepstakes"
 	},
 	es: {
 		first_name: "Nombre",
@@ -474,7 +486,8 @@ var formLabels = {
 		due_date: "Fecha estimada",
 		phone_number: "Teléfono",
 		email: "Correo electrónico",
-		doctor: "Médico"
+		doctor: "Médico",
+		sweepstakes: "I want to participate sweepstakes"
 	},
 	ru: {
 		first_name: "Имя",
@@ -482,7 +495,8 @@ var formLabels = {
 		due_date: "Ожидаемая дата",
 		phone_number: "Номер телефона",
 		email: "Email",
-		doctor: "Доктор"
+		doctor: "Доктор",
+		sweepstakes: "Я хочу участвовать в лотерее"
 	},
 	it: {
 		first_name: "Nome",
@@ -490,7 +504,8 @@ var formLabels = {
 		due_date: "Data di arrivo",
 		phone_number: "Numero di telefono",
 		email: "Email",
-		doctor: "Doctor"
+		doctor: "Doctor",
+		sweepstakes: "I want to participate sweepstakes"
 	},
 	cn: {
 		first_name: "名",
@@ -498,7 +513,8 @@ var formLabels = {
 		due_date: "预产期",
 		phone_number: "电话号码",
 		email: "电子邮件",
-		doctor: "醫生"
+		doctor: "醫生",
+		sweepstakes: "I want to participate sweepstakes"
 	},
 	tw: {
 		first_name: "名",
@@ -506,7 +522,8 @@ var formLabels = {
 		due_date: "預產期",
 		phone_number: "電話號碼",
 		email: "電子郵件",
-		doctor: "醫生"
+		doctor: "醫生",
+		sweepstakes: "I want to participate sweepstakes"
 	}
 };
 
@@ -1117,6 +1134,9 @@ function closeDropdowns() {
 	}
 }
 
+function Custom_init() {
+}
+
 function createMenuPage(lang, pageId) {
 	debugWrite("createMenuPage","start");
 	debugWrite("pageId",pageId);
@@ -1126,9 +1146,41 @@ function createMenuPage(lang, pageId) {
 	page.attr("id",pageId)
 	page.addClass(lang);
 	
-	page.find("#title").html(pages[lang][pageId].title);
-	page.find("#subtitle").html(pages[lang][pageId].subtitle);
+	// Производим замену в строках-шаблонах значениями аргументов и добавляем полученные строуи на страницу
+	var title = pages[lang][pageId].title;
+	var subtitle = pages[lang][pageId].subtitle;
+	for(var arg in args) {
+		title = title.split("##"+arg+"##").join(args[arg]);
+		subtitle = subtitle.split("##"+arg+"##").join(args[arg]);
+	}
+	page.find("#title").html(title);
+	page.find("#subtitle").html(subtitle);
 	
+		// Используем фрагмент из скрипта CUSTOM FORM ELEMENTS
+		var inputs = page.get(0).getElementsByTagName("input");
+		for(a = 0; a < inputs.length; a++) {
+			if((inputs[a].type == "checkbox" || inputs[a].type == "radio") && inputs[a].className.indexOf("styled") > -1) {
+				if(!inputs[a].getAttribute("disabled")) {
+					$(inputs[a].previousSibling).mousedown(Custom.pushed);
+					$(inputs[a].previousSibling).mouseup(Custom.check);
+					$(inputs[a].previousSibling).mouseup(function() {
+						var item = this.nextSibling;
+						$("input[name='"+$(item).attr("name")+"']").each(function(index,element) {
+							element.checked=item.checked;
+						});
+					});
+					$(inputs[a].previousSibling).mouseup(Custom.clear);
+					$(inputs[a]).change(function() {
+						var item = this;
+						$("input[name='"+$(item).attr("name")+"']").each(function(index,element) {
+							element.checked=item.checked;
+						});
+					});
+					$(inputs[a]).change(Custom.clear);
+				}
+			}
+		}
+
 	// Перевод заголовков полей формы на указанный язык
 	for(var lblFor in formLabels[lang]) {
 		page.find("label[for='"+lblFor+"']").text(formLabels[lang][lblFor]);
@@ -1152,7 +1204,7 @@ function createMenuPage(lang, pageId) {
 	}
 	languageSelector += "</select></div>";
 	page.append(languageSelector);
-
+	
 	// Создание выпадающего списка языков на основе созданного select
 	// Письмо от 02.08.2013:
 	// При запросе фамилии доктора, нужно сделать так, что если человек может на заднем фоне поменять язык, 
@@ -1231,6 +1283,14 @@ function createMenuPage(lang, pageId) {
 	}
 	debugWrite("Установка валидации форм","end");
 
+	page.find("label").click(function() {
+		if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+		$("input[name='"+$(this).attr("for")+"']").each(function(index,element) {
+			element.checked = !element.checked;
+		});
+		Custom.clear();
+		return false;
+	});
 	// Синхронизация полей ввода форм на различных языках
 	page.find("input").change(function(event) {
 		$("input[name='"+$(this).attr("name")+"']").val($(this).val());
@@ -1497,6 +1557,26 @@ $(document).ready(function(e) {
 	}
 	debugWrite("Переадресация на мобильную версию","end");
 
+		// Используем фрагмент из скрипта CUSTOM FORM ELEMENTS
+		var inputs = document.getElementsByTagName("input"), span = Array(), textnode, option, active;
+		for(a = 0; a < inputs.length; a++) {
+			if((inputs[a].type == "checkbox" || inputs[a].type == "radio") && inputs[a].className.indexOf("styled") > -1) {
+				span[a] = document.createElement("span");
+				span[a].className = inputs[a].type;
+
+				if(inputs[a].checked == true) {
+					if(inputs[a].type == "checkbox") {
+						position = "0 -" + (checkboxHeight*2) + "px";
+						span[a].style.backgroundPosition = position;
+					} else {
+						position = "0 -" + (radioHeight*2) + "px";
+						span[a].style.backgroundPosition = position;
+					}
+				}
+				inputs[a].parentNode.insertBefore(span[a], inputs[a]);
+			}
+		}
+
 	// Использование языка браузера в качестве начального языка страниц
 	debugWrite("Использование языка браузера в качестве начального языка страниц","start");
 	var userLang = navigator.language || navigator.userLanguage; 
@@ -1561,11 +1641,6 @@ function onDeviceReady() {
 $.when(deviceReadyDeferred, domReadyDeferred, languageReadyDeferred).then(function() {
 	debugWrite('when(deviceReadyDeferred, domReadyDeferred, languageReadyDeferred).then','start');
 
-	// Создание страниц для текущего языка
-	debugWrite("Создание страниц для текущего языка","start");
-	createPagesIfNotExists(currentLanguage);
-	debugWrite("Создание страниц для текущего языка","end");
-		
 	// Разбор строки запроса на элементы
 	debugWrite("Разбор строки запроса на элементы","start");
 	try {
@@ -1575,6 +1650,42 @@ $.when(deviceReadyDeferred, domReadyDeferred, languageReadyDeferred).then(functi
 	}
 	debugWrite("Разбор строки запроса на элементы","end");
 	
+		
+	debugWrite("Заполняем аргументы значениями переданными в параметрах","start");
+	try {
+		url.attr("query").split("&").forEach(function (value,index) {
+			var ar = value.split("=");
+			debugWrite(ar[0],ar[1]);
+			args[ar[0]]=urldecode(ar[1]);
+		});
+	} catch (e) {
+		debugWrite('url.attr("query").split("&").forEach error',e);
+	}
+	debugWrite("Заполняем аргументы значениями переданными в параметрах","end");
+
+	debugWrite("Заполняем аргументы значениями указанными в iPadID","start");
+	try {
+		if(typeof kioskpro_id === 'undefined') {
+		} else {
+		  var iPadID = kioskpro_id.toString().split(" ").join("");
+		  if (!iPadID || iPadID == "") {
+		  } else {
+			   iPadID.split("&").forEach(function (value,index) {
+					var ar = value.split("=");
+					debugWrite(ar[0],ar[1]);
+					args[ar[0]]=urldecode(ar[1]);
+				});
+		  }
+		}
+	} catch (e) {
+		debugWrite('getID().split("&").forEach error',e);
+	}
+	debugWrite("Заполняем аргументы значениями указанными в iPadID","end");
+	
+	// Создание страниц для текущего языка
+	debugWrite("Создание страниц для текущего языка","start");
+	createPagesIfNotExists(currentLanguage);
+	debugWrite("Создание страниц для текущего языка","end");
 		
 /*
 	// Инициализация для YouTube Player API
@@ -1610,18 +1721,11 @@ $.when(deviceReadyDeferred, domReadyDeferred, languageReadyDeferred).then(functi
 	}
 	debugWrite("Инициализация переменных","end");
 
-	// Заполняем элементы ввода значениями переданными в параметрах
-	debugWrite("Заполняем элементы ввода значениями переданными в параметрах","start");
-	try {
-		url.attr("query").split("&").forEach(function (value,index) {
-			var ar = value.split("=");
-			debugWrite(ar[0],ar[1]);
-			$("input[name*='"+ar[0]+"']").val(urldecode(ar[1]));
-		});
-	} catch (e) {
-		debugWrite('url.attr("query").split("&").forEach error',e);
+	debugWrite("Заполняем поля формы значениями указанными в аргументах","start");
+	for(var arg in args) {
+		$("input[name*='"+arg+"']").val(args[arg]);
 	}
-	debugWrite("Заполняем элементы ввода значениями переданными в параметрах","end");
+	debugWrite("Заполняем поля формы значениями указанными в аргументах","end");
 	
 	debugWrite("Изменение размера элементов под размер экрана","start");
 	try {
