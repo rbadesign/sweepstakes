@@ -757,6 +757,12 @@
 		$(".error").remove();
 		$(".ErrorLabel").remove();
 		$(".EditingFormErrorLabel").remove();
+		
+		$("input#sweepstakes").each(function (index,element) {
+			element.checked = true;
+		});
+		Custom.clear();
+		$(".skip").hide();
 	}
 	
 	function playCurrentPlayer() {
@@ -1527,17 +1533,25 @@
 		}
 		debugWrite("Установка валидации форм","end");
 	
+		if(page.find("input#sweepstakes").length) $(".skip").toggle(!page.find("input#sweepstakes").get(0).checked);
+		
 		page.find("label").click(function() {
 			if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
 			$("input[name='"+$(this).attr("for")+"']").each(function(index,element) {
 				element.checked = !element.checked;
 			});
 			Custom.clear();
+			$(".skip").toggle(!$("input#sweepstakes").get(0).checked);
 			return false;
 		});
 		// Синхронизация полей ввода форм на различных языках
 		page.find("input").change(function(event) {
 			$("input[name='"+$(this).attr("name")+"']").val($(this).val());
+		});
+		
+		page.find("span.checkbox").mouseup(function(event) {
+			debugWrite("sweepstakes","mouseup");
+			$(".skip").toggle(!$("input#sweepstakes").get(0).checked);
 		});
 		
 		page.find(".save").click(function(event) {
