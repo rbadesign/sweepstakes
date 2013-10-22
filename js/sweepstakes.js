@@ -645,14 +645,17 @@
 		// В связи с тем, что только одно видео в проекте имеет перевод или субтитры, 
 		// то на всех последующих страницах нужно добавить фразу 
 		// "Мы извиняемся, но это видео демонстрируется только на английском языке" 
-		sorry.toggle(page.hasClass("en")==false && !isKioskPro());
+		sorry.toggle(page.hasClass("en")==false && !isKioskPro() && !isCordova());
+		if(isMobileSafari()) {
+			createYoutubePlayer(page);
+		}
 	}
 	function hideCurrentVideo() { 
-		var playerid = "jsplayer-"+$(currentVideoPage()).attr("id");
+		var page = $(currentVideoPage());
+		var playerid = "jsplayer-"+page.attr("id");
 		playerReadyDeferred[playerid] = $.Deferred();
 		if(isMobileSafari()) {
 			destroyCurrentPlayer();
-			createYoutubePlayer($(currentVideoPage()));
 		}
 		$(currentVideoPage()).hide(); 
 	}
@@ -901,9 +904,7 @@
 				try {
 					var tubeplayer = currentTubePlayer();
 					var playerid = $(tubeplayer).attr("id");
-					$.when(playerReadyDeferred[playerid]).then(function() {
-						tubeplayer.tubeplayer("destroy");
-					});
+					tubeplayer.tubeplayer("destroy");
 				}
 				catch(e) {
 					debugWrite("tubeplayer:",e);
@@ -1343,7 +1344,7 @@
 		});
 		debugWrite("Инициализация html5 video","end");
 	
-		createYoutubePlayer(page);
+		if(!isMobileSafari()) createYoutubePlayer(page);
 	
 		page.find(".videoStop").click(function(event) {
 			if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
@@ -1810,6 +1811,11 @@
 			window.location.hostname = "m.safeguardingstemcells.com";
 		}
 		debugWrite("Переадресация на мобильную версию","end");
+		
+		if(!isCordova() && !isKioskPro()) {
+			$('head').append('<meta name="viewport" content="width=1280" />');
+		}
+		
 	
 			// Используем фрагмент из скрипта CUSTOM FORM ELEMENTS
 			var inputs = document.getElementsByTagName("input"), span = Array(), textnode, option, active;

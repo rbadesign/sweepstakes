@@ -70,6 +70,7 @@ body {
 #video-page object, .video-page object,
 #video-page .jsplayer, .video-page .jsplayer,
 #video-page .iframeplayer, .video-page .iframeplayer {
+	position:relative;
 	width: 100%;
 	min-width: 1024px;
 	max-width: 1024px;
