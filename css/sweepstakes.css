@@ -482,7 +482,7 @@ label {
 .page0 .play, .page4 .play, .page5 .play, 
 .page0 .contact, .page1 .contact, .page2 .contact, .page3 .contact, .page4 .contact, .page5 .contact, 
 .page1 .save, .page2 .save, .page3 .save, .page4 .save, .page5 .save, 
-.page1 .replay, .page2 .replay, .page3 .replay, .page4 .replay, .page5 .replay, 
+.page0 .replay, .page1 .replay, .page2 .replay, .page3 .replay, .page4 .replay, .page5 .replay, 
 .page0 .home, 
 .page0 .prev, .page1 .prev, .page4 .prev, .page5 .prev, 
 .page0 .next, .page4 .next, .page5 .next {
@@ -495,6 +495,12 @@ label {
 .video3 .videoTip {
 	display: none !important;
 }
+
+.videoHome {
+	display:block !important;
+	opacity:1.0 !important;
+}
+
 
 #datepicker {
 	font-size:16px;

@@ -248,6 +248,7 @@
 	//		button-small-mini
 	var menuButtons = {
 		en: {
+			logo: { buttonClass:"", text:"" },
 			replay: { buttonClass:"button", text:"Replay" },
 			play: { buttonClass:"button", text:"" },
 			prev: { buttonClass:"button-small", text:"" },
@@ -260,6 +261,7 @@
 			rules: { buttonClass:"", text:"This promotion is subject to the official rules." }
 		},
 		es: {
+			logo: { buttonClass:"", text:"" },
 			replay: { buttonClass:"button", text:"Replay" },
 			play: { buttonClass:"button", text:"" },
 			prev: { buttonClass:"button-small", text:"" },
@@ -272,6 +274,7 @@
 			rules: { buttonClass:"", text:"Esta promoción está sujeta a las normas oficiales." }
 		},
 		ru: {
+			logo: { buttonClass:"", text:"" },
 			replay: { buttonClass:"button", text:"Повторить" },
 			play: { buttonClass:"button", text:"" },
 			prev: { buttonClass:"button-small", text:"" },
@@ -284,6 +287,7 @@
 			rules: { buttonClass:"", text:"Участие в акции описано в официальных правилах." }
 		},
 		it: {
+			logo: { buttonClass:"", text:"" },
 			replay: { buttonClass:"button", text:"Replay" },
 			play: { buttonClass:"button", text:"" },
 			prev: { buttonClass:"button-small", text:"" },
@@ -296,6 +300,7 @@
 			rules: { buttonClass:"", text:"This promotion is subject to the official rules." }
 		},
 		cn: {
+			logo: { buttonClass:"", text:"" },
 			replay: { buttonClass:"button", text:"重播" },
 			play: { buttonClass:"button", text:"" },
 			prev: { buttonClass:"button-small", text:"" },
@@ -308,6 +313,7 @@
 			rules: { buttonClass:"", text:"此活动须遵守其正式规则。" }
 		},
 		tw: {
+			logo: { buttonClass:"", text:"" },
 			replay: { buttonClass:"button", text:"重播" },
 			play: { buttonClass:"button", text:"" },
 			prev: { buttonClass:"button-small", text:"" },
@@ -374,7 +380,7 @@
 			},
 			page5: { 
 				title: "Gracias",
-				subtitle: "Su solicitud ha sido enviada.<br />Muy pronto uno de nuestros asesores de servicio al cliente se pondrá en contacto con usted"
+				subtitle: "Su solicitud ha sido enviada.<br />Muy pronto uno de nuestros asesores de servicio al cliente se pondrá en contacto con usted."
 			}
 		},
 		ru: {
@@ -959,8 +965,7 @@
 		debugWrite("onStateChange",state);
 		switch(state) {
 		case 0:
-			hideCurrentVideoStop();
-			hideCurrentVideoContact();
+			hideCurrentVideoMenu();
 			hideCurrentVideo();
 			hideBuffering();
 			currentIndex = nextIndex(currentIndex);
@@ -969,15 +974,13 @@
 		case 1:
 			activateCurrentPlayer();
 			hideBuffering();
-			hideCurrentVideoStop();
-			hideCurrentVideoContact();
+			hideCurrentVideoMenu();
 			showCurrentVideo();
 			hideCurrentMenu();
 			break;
 		case 2:
 			hideBuffering();
-			showCurrentVideoStop();
-			showCurrentVideoContact();
+			showCurrentVideoMenu();
 			break;
 		case 3:
 	//		showBuffering();
@@ -1040,6 +1043,11 @@
 		hideBuffering();
 	}
 	
+	function openCryoCell() {
+		var win = window.open("http://www.cryo-cell.com", '_blank');
+		win.focus();
+	}
+
 	// Процедура кросс-доменной отправки содержимого формы ввода
 	// Параметр - отправляемая форма ввода
 	function crossDomainSubmit(item) {
@@ -1183,12 +1191,10 @@
 				onUnMute: function(){}, // after the player is unmuted
 				onPlayerUnstarted: function(){
 					hideBuffering();
-					showCurrentVideoStop();
-					showCurrentVideoContact();
+					showCurrentVideoMenu();
 				}, // when the player returns a state of unstarted
 				onPlayerEnded: function(){
-					hideCurrentVideoStop();
-					hideCurrentVideoContact();
+					hideCurrentVideoMenu();
 					hideCurrentVideo();
 					hideBuffering();
 					currentIndex = nextIndex(currentIndex);
@@ -1197,15 +1203,13 @@
 				onPlayerPlaying: function(){
 					activateCurrentPlayer();
 					hideBuffering();
-					hideCurrentVideoStop();
-					hideCurrentVideoContact();
+					hideCurrentVideoMenu();
 					showCurrentVideo();
 					hideCurrentMenu();
 				}, //when the player returns a state of playing
 				onPlayerPaused: function(){
 					hideBuffering();
-					showCurrentVideoStop();
-					showCurrentVideoContact();
+					showCurrentVideoMenu();
 				}, // when the player returns a state of paused
 				onPlayerCued: function(){
 					hideBuffering();
@@ -1316,8 +1320,7 @@
 			var playerid = $(e).attr("id");
 			playerActivated[playerid] = !isMobileSafari();
 			player.addEventListener("ended", function(e){
-				hideCurrentVideoStop();
-				hideCurrentVideoContact();
+				hideCurrentVideoMenu();
 				hideCurrentVideo();
 				hideBuffering();
 				currentIndex = nextIndex(currentIndex);
@@ -1326,14 +1329,12 @@
 			player.addEventListener("playing", function(e){
 				activateCurrentPlayer();
 				hideBuffering();
-				hideCurrentVideoStop();
-				hideCurrentVideoContact();
+				hideCurrentVideoMenu();
 				showCurrentVideo();
 				hideCurrentMenu();
 			}, false);
 			player.addEventListener("pause", function(e){
-				showCurrentVideoStop();
-				showCurrentVideoContact();
+				showCurrentVideoMenu();
 			}, false);
 			player.addEventListener("waiting", function(e){
 				showBuffering();
@@ -1370,7 +1371,7 @@
 			pauseCurrentPlayer();
 			hideCurrentVideoMenu();
 			hideCurrentVideo();
-			currentIndex = 3;
+			currentIndex = 4;
 			showCurrentMenu();
 			return false;
 		});
@@ -1383,9 +1384,6 @@
 		for(var i=0; i<oDropdowns.length; i++) {
 			oDropdowns[i].close();
 		}
-	}
-	
-	function Custom_init() {
 	}
 	
 	function createMenuPage(lang, pageId) {
@@ -1729,11 +1727,26 @@
 			return false;
 		});
 	
+		page.find(".logo").click(function(event) {
+			if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+			closeDropdowns();
+			hideCurrentMenu();
+			currentIndex = 0;
+			showCurrentMenu();
+			return false;
+		});
+	
+		page.find(".logo").dblclick(function(event) {
+			if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
+			openCryoCell();
+			return false;
+		});
+	
 		page.find(".contact").click(function(event) {
 			if (event.preventDefault) { event.preventDefault(); } else { event.returnValue = false; }
 			closeDropdowns();
 			hideCurrentMenu();
-			currentIndex = 3;
+			currentIndex = 4;
 			showCurrentMenu();
 			return false;
 		});
