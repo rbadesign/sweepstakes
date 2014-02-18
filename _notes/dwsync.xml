@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="config.xml" server="rbadesign.us/public_html/" local="130233779219452289" remote="130233577800000000" Dst="0" />
-<file name="icon.png" server="rbadesign.us/public_html/" local="130168015280133852" remote="130233577800000000" Dst="0" />
-<file name="index.html" server="rbadesign.us/public_html/" local="130278559892078886" remote="130278235800000000" Dst="0" />
-<file name="README.md" server="rbadesign.us/public_html/" local="130173372578757610" remote="130233577800000000" Dst="0" />
+<file name="config.xml" server="rbadesign.us/public_html/" local="130238919988804691" remote="130350816600000000" Dst="0" />
+<file name="icon.png" server="rbadesign.us/public_html/" local="130238919993385271" remote="130350817200000000" Dst="0" />
+<file name="index.html" server="rbadesign.us/public_html/" local="130351152911883682" remote="130350817800000000" Dst="0" />
+<file name="README.md" server="rbadesign.us/public_html/" local="130238919988744685" remote="130350820800000000" Dst="0" />
+<file name=".gitattributes" server="rbadesign.us/public_html/" local="130238919988724684" remote="130350816600000000" Dst="0" />
+<file name=".gitignore" server="rbadesign.us/public_html/" local="130238919988734685" remote="130350816600000000" Dst="0" />
 </dwsync>
